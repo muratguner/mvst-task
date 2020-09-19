@@ -15,7 +15,7 @@ server.listen(5000, () => {
  * @api {get} /api/repositories:name? Request User GitHub Private and Public Repositories
  * @apiName getRepositories
  *
- * @apiHeaders {String} token GitHub Personal Access tOKEN
+ * @apiHeaders {String} token GitHub Personal Access Token
  * @apiParam {String} name Query string for filtering the repositories by name(optional)
  *
  * @apiSuccess {Object} Json object of the User repositories.
@@ -25,8 +25,11 @@ server.get("/api/repositories:name?", (req, res, next) => {
   const name = req.query.name;
   var client = github.client(authHeader);
   client.get("user/repos", function (err, status, body, headers) {
-    let repos = generateRepositoriesArray(body, name);
-    res.json(repos);
+    if (body === undefined) res.json("Invalid Token");
+    else {
+      let repos = generateRepositoriesArray(body, name);
+      res.json(repos);
+    }
   });
 });
 
