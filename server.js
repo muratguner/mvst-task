@@ -2,21 +2,21 @@ const express = require("express"),
   server = express();
 
 var github = require("octonode");
-const auth = require("octonode/lib/octonode/auth");
 
 //setting the port.
 server.set("port", process.env.PORT || 5000);
 
-//Binding to localhost://3000
+//Binding to localhost://5000
 server.listen(5000, () => {
-  console.log("Express server started at port 3000");
+  console.log("Express server started at port 5000");
 });
 
 /**
  * @api {get} /api/repositories:name? Request User GitHub Private and Public Repositories
  * @apiName getRepositories
  *
- * @apiParam {String} name Repository name(optinal)
+ * @apiHeaders {String} token GitHub Personal Access tOKEN
+ * @apiParam {String} name Query string for filtering the repositories by name(optinal)
  *
  * @apiSuccess {Object} Json object of the User repositories.
  */
