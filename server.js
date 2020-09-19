@@ -16,7 +16,7 @@ server.listen(5000, () => {
  * @apiName getRepositories
  *
  * @apiHeaders {String} token GitHub Personal Access tOKEN
- * @apiParam {String} name Query string for filtering the repositories by name(optinal)
+ * @apiParam {String} name Query string for filtering the repositories by name(optional)
  *
  * @apiSuccess {Object} Json object of the User repositories.
  */
@@ -33,7 +33,7 @@ server.get("/api/repositories:name?", (req, res, next) => {
 /**
  * Responsible for generating a response array.
  * @param {object} body of the request.
- * @param {string} name of the optinal query paramater.
+ * @param {string} name of the optional query paramater.
  */
 function generateRepositoriesArray(body, name) {
   let childrenArray = [];
