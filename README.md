@@ -1,9 +1,18 @@
 # mvst-task
 
-### Run
+### Run 
+- Navigate to the mvst-task directory
+- ```npm install```
+- ```node server.js```
+
+### Run with Docker
 - Navigate to the mvst-task directory
 - ```docker build -t mvts-task .```
 - ```docker run -d -p 5000:5000 --name node-app mvts-task```
+
+### Test
+- To run the tests;
+- ```npm test```
 
 ## Endpoints
 - Rest API: http://localhost:5000
@@ -11,10 +20,10 @@
 
 ## Routes
 
-### User repositories
-`/localhost:5000/api/repositories?name=awesome`
+### User repositories `/localhost:5000/api/repositories?name=awesome`
+`curl --request GET 'http://localhost:5000/api/repositories?name=awesome' --header 'token: my_github_acess_token'`
 
-Returns all the repositories of the user, where the repository name includes awesome.
+Takes GitHub Personal Access Token in headers. Returns all the repositories of the user, where the repository name includes awesome.
 If name (optional)paramater is not given, it returns all the repositories of the user.
 
 Example:
